@@ -30,6 +30,10 @@ checksums           rmd160  ff4d6710cfd293d63ffe6baa1255acf6e604a26b \
 python.versions     38 39 310 311 312
 
 if {${name} ne ${subport}} {
+    if {${os.platform} eq "darwin" && [vercmp ${macosx_deployment_target} >= 15.0]} {
+        macosx_deployment_target 14.0
+    }
+
     patchfiles-append \
                     buildtools_config_py.patch \
                     buildtools_build_wxwidgets_py.patch \

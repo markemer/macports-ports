@@ -24,7 +24,8 @@ checksums                   rmd160  88033cfe653f3d18feb41c7e0225ec31fd613104 \
                             size    48431454
 
 patchfiles-append           patch-CMakeLists.txt.diff \
-                            patch-env.sh.in.diff
+                            patch-env.sh.in.diff \
+                            patch-stdprs_BRepFont.cxx.diff
 
 compiler.cxx_standard       2011
 configure.args-append       -DCMAKE_CXX_STANDARD=11 \

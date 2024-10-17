@@ -5,7 +5,7 @@ PortGroup           cmake 1.1
 PortGroup           gitlab 1.0
 
 name                kicad
-version             7.0.11
+version             8.0.6
 description         KiCad is an electronic design automation software suite
 long_description    KiCad is an EDA software suite for the creation of professional schematics \
                     and printed circuit boards up to 32 copper layers with additional technical layers.
@@ -14,31 +14,25 @@ license             GPL-3+
 maintainers         {ra1nb0w @ra1nb0w} openmaintainer
 homepage            https://www.kicad.org/
 
-# Cannot update to python 3.12 because there is no py312-wxpython-4.0 port
-set python_version  3.11
+set python_version  3.12
 set py_ver_no_dot   [join [split ${python_version} "."] ""]
 set python_framework_dir ${frameworks_dir}/Python.framework/Versions/${python_version}
 
 if {${name} eq ${subport}} {
     PortGroup           boost 1.0
-    PortGroup           conflicts_build 1.0
     PortGroup           legacysupport 1.1
-
-    # Ignore stealth update of 7.0.11.
-    # https://trac.macports.org/ticket/69836
-    master_sites        macports_distfiles
 
     gitlab.setup        kicad/code kicad ${version}
     revision            0
-    checksums           rmd160  05936277e09b18f03f773d7e8ffdd7fbb54e3376 \
-                        sha256  24feb0747ee8d767c903fac5254c314a5012f4aee7016e961da845765764cf73 \
-                        size    44083805
+    checksums           rmd160  0553af6629f201a67bbb4f80b9c9c831987b66b3 \
+                        sha256  f808ecb7ff588d9f6c70ec5938072c28ededaaed37fb7b4fe5eaaea57253f06c \
+                        size    72953578
 
     patchfiles-append \
         macports_prefix.patch \
-        opencascade-7.8.patch \
-        0001-cmake-adding-KICAD_MACOSX_APP_BUNDLE-option.patch \
         0002-disable-codesigning.patch
+        #0001-cmake-adding-KICAD_MACOSX_APP_BUNDLE-option.patch
+        #opencascade-7.8.patch
 
     post-patch {
         reinplace -W ${worksrcpath} "s|@PREFIX@|${prefix}|g" \
@@ -47,7 +41,6 @@ if {${name} eq ${subport}} {
     }
 
     boost.version       1.81
-    conflicts_build     boost
 
     compiler.cxx_standard 2017
 
@@ -75,7 +68,6 @@ if {${name} eq ${subport}} {
         path:lib/pkgconfig/pixman-1.pc:libpixman \
         port:unixODBC \
         path:lib/pkgconfig/harfbuzz.pc:harfbuzz \
-        port:kicad-docs \
         port:kicad-symbols \
         port:kicad-footprints \
         port:kicad-packages3D \
@@ -164,9 +156,9 @@ subport kicad-docs {
 subport kicad-symbols {
     gitlab.setup        kicad/libraries kicad-symbols ${version}
     revision            0
-    checksums           rmd160  dd69fdc2cf17e0574508663285024e6369348d43 \
-                        sha256  666acf1ef282430721e64b651672d5a0b6896b3db7d8854f6035de767bf9b21b \
-                        size    3369887
+    checksums           rmd160  3856debdc88ffaf343eab6268a5e0af33039d5d0 \
+                        sha256  4b714f913bac912ff94009fe6de430282f7a2f07b7aeff5b7a9a1bf98ebbc9ca \
+                        size    3687198
 
     description         Kicad symbols
     long_description    {*}${description}
@@ -175,9 +167,9 @@ subport kicad-symbols {
 subport kicad-footprints {
     gitlab.setup        kicad/libraries kicad-footprints ${version}
     revision            0
-    checksums           rmd160  e9f5b60f98f393c0d78b20e82bef74bb36fecc2f \
-                        sha256  c07a5886023793efc4e697bd49b07c7e13d5ec6eb18db8bf62b849add219b48f \
-                        size    22722611
+    checksums           rmd160  7ae11d1252864ac203f2e4f37ebb9f68eb30f1d7 \
+                        sha256  2ffc2335d24778bc88d8b549c4bfa64f7c2c1741b5c9daed4855508839d077d1 \
+                        size    26271483
 
     description         Kicad footprints
     long_description    {*}${description}
@@ -186,9 +178,9 @@ subport kicad-footprints {
 subport kicad-packages3D {
     gitlab.setup        kicad/libraries kicad-packages3D ${version}
     revision            0
-    checksums           rmd160  36f02b35321c7e203fb6308d8d9912bfe28d343f \
-                        sha256  11361137f3604d11b12a1f5c132e939f6fed806bb2675d9990a985c967fae2f9 \
-                        size    774735333
+    checksums           rmd160  05aabedaafcee82ff4b48101c4b532262223d68d \
+                        sha256  0dbbe21bc09ccae8a40918ab697b2b14774dd68a9afcf3b9e661fa473b0d8ff2 \
+                        size    790799458
 
     description         Kicad package 3D
     long_description    {*}${description}
@@ -197,9 +189,9 @@ subport kicad-packages3D {
 subport kicad-templates {
     gitlab.setup        kicad/libraries kicad-templates ${version}
     revision            0
-    checksums           rmd160  10be23bfa01d8b1e617197774b1e2768797a6e12 \
-                        sha256  df708e2ac2a81cbe1fb8b655b0d29694dc8c530616d244330f4cd70a9e463fd2 \
-                        size    1348043
+    checksums           rmd160  e86b707ad78c5b754a5d5c7dd031145b6cfb0926 \
+                        sha256  50a665b8a66fedf81b26918031d07ca48a548b604cc82ee557bc298f41261a68 \
+                        size    2783854
 
     description         Kicad templates
     long_description    {*}${description}
