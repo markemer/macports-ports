@@ -1,0 +1,220 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+
+PortSystem          1.0
+PortGroup           golang 1.0
+
+go.setup            github.com/neilberkman/clippy v0.10.0
+categories          sysutils
+maintainers         {mark @markemer} openmaintainer
+license             MIT
+
+description         Unified clipboard tool for macOS that intelligently handles both text and file copying.
+
+long_description    ${description} \
+                    Copy files from your terminal that actually paste into GUI apps. No more switching to Finder. \
+                    macOS only - built specifically for the Mac clipboard system.
+
+checksums           ${distname}${extract.suffix} \
+                        rmd160  2c6d33f500431603fa467e3b0cd96cbc151c8cc4 \
+                        sha256  e2ed69459a75862c7969454d0a2ee6e0c58e05ee2f4753eb9c9040826852ebdf \
+                        size    121603
+
+go.vendors          gopkg.in/yaml.v3 \
+                        lock    v3.0.1 \
+                        rmd160  e85ac1368fb7f9ef945b7fd7bd608a1f0d261c12 \
+                        sha256  f3ea6be3f405ec25f8799773355aba54f8831d11f5315a01155bdc69b92eca7b \
+                        size    91208 \
+                    golang.org/x/text \
+                        lock    v0.24.0 \
+                        rmd160  b181709ec4248be6a143e2448942748f081b2f50 \
+                        sha256  329c3d21dc0465c090733bdb87cc596776a8492901411be9024028af808903ac \
+                        size    8974645 \
+                    golang.org/x/sys \
+                        lock    v0.33.0 \
+                        rmd160  1c0c8967ed410be496af17ad009aacd0fb89034c \
+                        sha256  2564f2911a5c695a9ad5720065ce58783b97a2d2f3fdaa2e8742a44fc0df4e2e \
+                        size    1529295 \
+                    golang.org/x/sync \
+                        lock    v0.15.0 \
+                        rmd160  1342ee64fa5d1091711e74723054b9fd0925760b \
+                        sha256  e626d394502b207c5bd969e2433d5ec7407185edd9a9cb5dc6d76d6de73dfe6d \
+                        size    18714 \
+                    golang.org/x/net \
+                        lock    v0.39.0 \
+                        rmd160  a2a129cdc5ea03afe98e179958cdd0e086a68d8e \
+                        sha256  bbe169f29c483879b5b6bb054d1358e980f711f21d6516e49157c79a82dfbc85 \
+                        size    1502270 \
+                    golang.org/x/exp \
+                        lock    5c715a9e8561 \
+                        rmd160  70b2b52094db383d55f73a2ee5190cee0c6410f9 \
+                        sha256  b13ce42f14361b187012869848458057040d33b0cbb0a6455322b7946520da5a \
+                        size    1580357 \
+                    github.com/yosida95/uritemplate \
+                        lock    v3.0.2 \
+                        rmd160  6e03c7c857e954cc63b8398dd17d9bf81f67095c \
+                        sha256  b458db94c307fd638d15e54f4239b2befbfeff75e083b5ba2b0a29ca3fa1065b \
+                        size    13405 \
+                    github.com/xo/terminfo \
+                        lock    abceb7e1c41e \
+                        rmd160  03f45e9801b38da949e34fec0c1881c96d6fa37d \
+                        sha256  c8f968af54b9283119a9132ff6748f081afdd6b52deef111f6ac680c00a01f19 \
+                        size    35179 \
+                    github.com/stretchr/testify \
+                        lock    v1.9.0 \
+                        rmd160  59147e117812fdf8270ec79e46a229c472caf08d \
+                        sha256  e6fa4f530cad5bac94bf08af05ddd1f569aeac8db4017ab4330ab7fe2802a6a3 \
+                        size    108716 \
+                    github.com/spf13/pflag \
+                        lock    v1.0.6 \
+                        rmd160  71c96f5c72e1ec15157e4dd6438e69f717bd7b99 \
+                        sha256  296b98eebe4fd4b6435afbb05a93ffd4e4cb20a54ab128f633b21cfac9f136e1 \
+                        size    52859 \
+                    github.com/spf13/cobra \
+                        lock    v1.9.1 \
+                        rmd160  95925251f62ff042108f882129779eae809a9a8c \
+                        sha256  33dec62c9ce9622184102f590c5c97e4b6aaa6341510b3defc21c1266b31f057 \
+                        size    197845 \
+                    github.com/spf13/cast \
+                        lock    v1.7.1 \
+                        rmd160  f3ab5e4e11d85dc42c7ac01ed59f475af903cbd9 \
+                        sha256  1c80173549238c1fdb741ec0ed527b2a0acdf3f0d9f70a07c1bc0f20ac02f4ee \
+                        size    15755 \
+                    github.com/rogpeppe/go-internal \
+                        lock    v1.9.0 \
+                        rmd160  acb8f644e5634bdae632cdb61ea736422aeb88f0 \
+                        sha256  65b0852e5c78fa920fef2176fa17180bf1f7f32a1163baacb44c2aa480845a16 \
+                        size    133682 \
+                    github.com/rivo/uniseg \
+                        lock    v0.4.7 \
+                        rmd160  a9056dc9a2a80aa9c46d0ff9e54f9e2e5a498c41 \
+                        sha256  abc6a2f17b64b34b8a0c56eb9d0b53886ebbe0c88d467755c09c7fa696a16677 \
+                        size    458166 \
+                    github.com/pmezard/go-difflib \
+                        lock    v1.0.0 \
+                        rmd160  fc879bfbdef9e3ff50844def58404e2b5a613ab8 \
+                        sha256  7cd492737641847266115f3060489a67f63581e521a8ec51efbc280c33fc991f \
+                        size    11409 \
+                    github.com/muesli/termenv \
+                        lock    v0.16.0 \
+                        rmd160  463214c9628bd837b8372a1fc4e97741390c6c39 \
+                        sha256  d7c5257a53385dfc5a362aa1e28ae1667c18610f61db203a482784b1ea4b3f74 \
+                        size    422997 \
+                    github.com/muesli/cancelreader \
+                        lock    v0.2.2 \
+                        rmd160  cbc757f0d680959cea46000a5dd74e63ddbb8a15 \
+                        sha256  33f793cd6fbf7733ed7cba381920606b4917ba472148f85a5fd0965477146fc8 \
+                        size    9431 \
+                    github.com/muesli/ansi \
+                        lock    276c6243b2f6 \
+                        rmd160  bbc37c92ce2b54f538eb0d5f32edefd7074d540a \
+                        sha256  0b4beac5757eb25d0c45f9f931e2b241168e16c2bd58d21e5aafce7e33c669ee \
+                        size    5249 \
+                    github.com/mattn/go-runewidth \
+                        lock    v0.0.16 \
+                        rmd160  297825c4365b5f723ae485e726259ebb620ecd66 \
+                        sha256  6c9e81a6b46220612b97ebc35e8d29d1907fd225a9ce3e40b7cebd64cc58d09c \
+                        size    18496 \
+                    github.com/mattn/go-localereader \
+                        lock    v0.0.1 \
+                        rmd160  7afdbbc0f4978c6f54c25df0d86ff3c66db19ce2 \
+                        sha256  75a68e82a83b37aee40ad81dfcfce54d2f999945282bb198add16a49b8ec7f46 \
+                        size    1738 \
+                    github.com/mattn/go-isatty \
+                        lock    v0.0.20 \
+                        rmd160  ef20ccdf87de8b704c0c7118625b2beb31d8f1b4 \
+                        sha256  397549e98cf5d40df585f31dc7902f017c37be88c64311dd2b4aeccab4009949 \
+                        size    4717 \
+                    github.com/mark3labs/mcp-go \
+                        lock    v0.34.0 \
+                        rmd160  3268ac5bdf74b931896d3185f9f6a81444e4d8aa \
+                        sha256  d81fd7f52619c8573b48919776f02501328b7f470c2fbf27fc07f4d7c322b1d2 \
+                        size    6699808 \
+                    github.com/lucasb-eyer/go-colorful \
+                        lock    v1.2.0 \
+                        rmd160  a4183d0625e6c94474942cdc544c1061d35c4e34 \
+                        sha256  fbad1aade4444bf51409f5b6a008cc14c7a7cdd1af856841fc1170605fae3914 \
+                        size    970841 \
+                    github.com/kr/text \
+                        lock    v0.2.0 \
+                        rmd160  48558c7e8ff67d510f83c66883907e95f4783163 \
+                        sha256  2f2e21ac8a9d523e88cbba4039441defc4a66bfaa78811c900a88fcf28729c4c \
+                        size    8702 \
+                    github.com/kr/pretty \
+                        lock    v0.3.1 \
+                        rmd160  8c08579b4c56cdc958794e77afe3413e80aa67c3 \
+                        sha256  7fcea475d6280976cf4a838e75d2b3a4105827316e588a80e49e8063d950c999 \
+                        size    10232 \
+                    github.com/inconshreveable/mousetrap \
+                        lock    v1.1.0 \
+                        rmd160  88f9577df93ac0f8801d8960adc7f28e38867f3e \
+                        sha256  f69af10ff08c0e87f92dac3ee5172d8ed02463725b74edfc8943ef018a1a632d \
+                        size    5343 \
+                    github.com/google/uuid \
+                        lock    v1.6.0 \
+                        rmd160  3d4f6f95018c6313f7258805845eb2a7e717850c \
+                        sha256  72700459e75cad2b36586e8a13aa12c2d6248c45db24d1eebf41e18b1ec1c811 \
+                        size    20895 \
+                    github.com/google/go-cmp \
+                        lock    v0.5.9 \
+                        rmd160  9832ae80123461baed8aa20e830199c0e21e337b \
+                        sha256  3058d20d61f03aa05fca0fc07acb8c50850c68086998c542857aec7ad1529482 \
+                        size    104431 \
+                    github.com/gabriel-vasile/mimetype \
+                        lock    v1.4.9 \
+                        rmd160  50e3d21c98cb621550b71cab68b7e3f971d1166d \
+                        sha256  905c7501db96972671c9e6ba13511d2dc2cdf4dff01e0b1fd047efb05eb40a2b \
+                        size    816590 \
+                    github.com/frankban/quicktest \
+                        lock    v1.14.6 \
+                        rmd160  d517a6cb2f6acc7f969c9ed49f464014a717bf98 \
+                        sha256  0142a3dd40b949b4d7e86768020e5f3c08fe026447458fd975b1b4c1f18b0745 \
+                        size    40112 \
+                    github.com/erikgeiser/coninput \
+                        lock    1c3628e74d0f \
+                        rmd160  77744cb442933c6c38c33aa830419834ba8e0ed6 \
+                        sha256  39ca6afc6b66e6c6a1772b497fdd0bb97471fac341c966fcae14ff6019629638 \
+                        size    8951 \
+                    github.com/davecgh/go-spew \
+                        lock    v1.1.1 \
+                        rmd160  7c02883aa81f81aca14e13a27fdca9e7fbc136f7 \
+                        sha256  e85d6afa83e64962e0d63dd4812971eccf2b9b5445eda93f46a4406f0c177d5f \
+                        size    42171 \
+                    github.com/charmbracelet/x/term \
+                        lock    v0.2.1 \
+                        rmd160  9b421c7662beb66fb61e79380038326ebc3633bd \
+                        sha256  5f9b486ad633575d90f003c9e7772076cb6289269bbd1d1ec224ae3d5f992358 \
+                        size    146770 \
+                    github.com/charmbracelet/x/cellbuf \
+                        lock    v0.0.13 \
+                        rmd160  def90910b0be7aa75c23a6ae168ef2912a008f47 \
+                        sha256  c0a9c024d103d879fbbb43f95b2721c33bcc216e75cdeda7c5e23cc27f6f5bca \
+                        size    978068 \
+                    github.com/charmbracelet/x/ansi \
+                        lock    v0.9.3 \
+                        rmd160  6bfee506b0403897a5e310ce5fd1a6f82a4a52c6 \
+                        sha256  fad3d0653d3daa26d03a73c4ce038d782ec5b6a7f8c2d1a3dc1f34bcf5b2b11a \
+                        size    297657 \
+                    github.com/charmbracelet/lipgloss \
+                        lock    v1.1.0 \
+                        rmd160  c754345ebdcdfef38263a8ca9a4dcf76b758a77f \
+                        sha256  ef19e44ed60b132285a119fbdede4443d270fe570f998187f021596af7a16c02 \
+                        size    97409 \
+                    github.com/charmbracelet/colorprofile \
+                        lock    f60798e515dc \
+                        rmd160  41a2c96efdde4b88245ab8aef28bf7f822628aa3 \
+                        sha256  a5315c739aa7a210158b20b0ce071bc9b113ad7a3f92190b3dab1bb5342683eb \
+                        size    15241 \
+                    github.com/charmbracelet/bubbletea \
+                        lock    v1.3.6 \
+                        rmd160  8d7a82ac11b010ea1a0e9d03f7bf28190aaaa0c9 \
+                        sha256  6909c37bddf683ed641b770c31d2aba65d5b3b6c2899df318b81e98043bc4f10 \
+                        size    2191023 \
+                    github.com/aymanbagabas/go-osc52 \
+                        lock    v2.0.1 \
+                        rmd160  8669f2bdcf2704bbc8df6af7e5fd396215737b9b \
+                        sha256  0904dc990e2f1e5bbe290e02f418940def4168b63e36914e3bf76ff2ac1fb2a5 \
+                        size    5889
+
+destroot {
+    xinstall -m 0755 ${worksrcpath}/${name} ${destroot}${prefix}/bin/
+}
