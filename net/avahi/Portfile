@@ -223,7 +223,7 @@ post-patch {
 }
 
 if {![info exists py_variant_set]} {
-    default_variants +python313
+    default_variants +python314
 }
 
 variant x11 conflicts quartz {
