@@ -136,7 +136,14 @@ jobs:
                   echo "Fetching tarball for commit $LAST_COMMIT"
                   if curl -fL -O -u "$MIRROR_UPLOAD_CREDENTIALS" "${MIRROR_UPLOAD_URL}portindex-${LAST_COMMIT}.tar.bz2"; then
                       mkdir -p tarball
-                      tar -C tarball -xjf "portindex-${LAST_COMMIT}.tar.bz2"
+                      BZIP2=/usr/bin/bzip2
+                      if sudo port install lbzip2; then
+                        if [ -x /opt/local/bin/lbzip2 ]; then
+                            BZIP2=/opt/local/bin/lbzip2
+                        fi
+                      fi
+                      tar -C tarball -xf "portindex-${LAST_COMMIT}.tar.bz2" \
+                        --use-compress-program "$BZIP2"
                       rm -f "portindex-${LAST_COMMIT}.tar.bz2"
                   else
                       echo "Fetch failed, starting from scratch."
@@ -252,7 +259,16 @@ jobs:
           set -eu
 
           echo "Creating tarball for commit ${CURRENT_COMMIT}"
-          tar -C tarball -cj --gid 0 --uid 0 --numeric-owner -f "portindex-${CURRENT_COMMIT}.tar.bz2" .
+          BZIP2=/usr/bin/bzip2
+          if [ ! -x /opt/local/bin/lbzip2 ]; then
+              if sudo port install lbzip2; then
+                if [ -x /opt/local/bin/lbzip2 ]; then
+                    BZIP2=/opt/local/bin/lbzip2
+                fi
+              fi
+          fi
+          tar -C tarball -c --use-compress-program "$BZIP2" --gid 0 --uid 0 --numeric-owner \
+            -f "portindex-${CURRENT_COMMIT}.tar.bz2" .
 
           echo "Uploading tarball for commit ${CURRENT_COMMIT}"
           curl -fL -u "$MIRROR_UPLOAD_CREDENTIALS" --upload-file "portindex-${CURRENT_COMMIT}.tar.bz2" "$MIRROR_UPLOAD_URL" > /dev/null
