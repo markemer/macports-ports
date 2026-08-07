@@ -29,6 +29,11 @@ compiler.blacklist-append \
 
 destroot.destdir    prefix=${destroot}${prefix}
 
+depends_lib port:p5.34-pango \
+            port:p5.34-cairo \
+            port:p5.34-json-maybexs \
+            port:tk
+
 post-destroot {
     set docdir ${prefix}/share/${subport}
     xinstall -d ${destroot}${docdir}
