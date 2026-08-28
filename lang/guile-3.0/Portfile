@@ -13,11 +13,10 @@ maintainers         {@graywolf wolfsden.cz:~+macports} openmaintainer
 license             LGPL-2.1+
 
 # current version
-version             3.0.10
-revision            1
-checksums           rmd160  c42990081a8fffaf63874d16f457d8e50db8bc36 \
-                    sha256  2dbdbc97598b2faf31013564efb48e4fed44131d28e996c26abe8a5b23b56c2a \
-                    size    9738824
+version             3.0.11
+checksums           rmd160  0364e71f89d0f6052917b9a0e540f5792c513bf2 \
+                    sha256  3c9c16972a73bb792752f2e4f1cce7212d7638d5494b5f7e8e19f3819dbf3a19 \
+                    size    9962275
 
 # At the moment 3.0.10 is broken on 32-bit platforms.
 if {${configure.build_arch} in [list i386 ppc]} {
