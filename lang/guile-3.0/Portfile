@@ -32,6 +32,14 @@ if {${configure.build_arch} in [list i386 ppc]} {
 
 compiler.c_standard 2011
 
+# libguile uses old-style empty function declarators to mean "any arity"
+# (`scm_t_subr' in scm.h, `cproc' in array-map.c).  In C23 those mean "no
+# arguments", which is a hard error rather than a warning.  AC_PROG_CC in
+# autoconf 2.72+ selects the newest standard the compiler supports, so with
+# Xcode 27 the reconfigured build picks -std=gnu23 and fails.  Pin the
+# standard to the one declared above instead.
+configure.cflags-append -std=gnu11
+
 universal_variant   no
 # Never cross compile.
 supported_archs     ${build_arch}
